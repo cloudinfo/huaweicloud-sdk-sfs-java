@@ -104,4 +104,29 @@ public class SfsMeta {
         );
         return builder.build();
     }
+
+
+    /**
+     * 列出可用区。查询manila中AZ,用于创建share,该接口是在manila原有接口的基础上扩展,通过增加可选参数share_az,来决定时查询所有AZ(包括scheduler中的AZ),还是仅查询用于创建共享的AZ
+     */
+    public static final HttpRequestDef<ListAzRequest, ListAzResponse> queryAZ = genForqueryAZ();
+
+    private static HttpRequestDef<ListAzRequest, ListAzResponse> genForqueryAZ() {
+        // basic
+        HttpRequestDef.Builder<ListAzRequest, ListAzResponse> builder =
+                HttpRequestDef.builder(HttpMethod.GET, ListAzRequest.class, ListAzResponse.class)
+                        .withUri("/v2/{project_id}/availability-zones")
+                        .withContentType("application/json;charset=UTF-8");
+        // requests
+        builder.withRequestField("share_az",
+                LocationType.Query,
+                FieldExistence.NULL_IGNORE,
+                Boolean.class,
+                f -> f.withMarshaller(ListAzRequest::getShareAz, (req, v) -> {
+                    req.setShareAz(v);
+                })
+        );
+        return builder.build();
+    }
+
 }

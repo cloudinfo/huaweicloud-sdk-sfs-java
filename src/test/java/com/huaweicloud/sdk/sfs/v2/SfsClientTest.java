@@ -10,6 +10,7 @@ import org.junit.Test;
  */
 @Slf4j
 public class SfsClientTest extends TestBase {
+
     @Test
     public void listSfsTest() {
         final ListSfsRequest request = ListSfsRequest.builder().withCount("true").build();
@@ -33,6 +34,10 @@ public class SfsClientTest extends TestBase {
         log.info("{}", response.getHttpStatusCode());
     }
 
+    /**
+     * errorCode: 422
+     * errorMsg: Unable to process the contained instructions
+     */
     @Test
     public void updateShare() {
         String shareId = "a45f315f-a218-4f41-b701-ebfab27a2cad";
@@ -44,4 +49,15 @@ public class SfsClientTest extends TestBase {
         log.info("{}", response.getHttpStatusCode());
     }
 
+    /**
+     * errorCode: 404
+     * errorMsg: The resource could not be found.
+     */
+    @Test
+    public void queryAZ() {
+        final ListAzRequest request = ListAzRequest.builder()
+                .shareAz(true).build();
+        ListAzResponse response = sfsClient.queryAZ(request);
+        log.info("{}", response.getAvailabilityZones());
+    }
 }

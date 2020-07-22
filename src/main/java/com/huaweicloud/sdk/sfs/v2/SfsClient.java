@@ -37,10 +37,16 @@ public class SfsClient {
 
     /**
      * 修改共享的描述和名称信息。
+     *
      * @param request
      * @return
      */
     public UpdateShareResponse updateShare(UpdateShareRequest request) {
         return hcClient.syncInvokeHttp(request, SfsMeta.updateShare);
+    }
+
+
+    public ListAzResponse queryAZ(ListAzRequest request) {
+        return hcClient.syncInvokeHttp(request, SfsMeta.queryAZ);
     }
 }
