@@ -97,6 +97,12 @@ public class ListAllShareDetailResponse {
         @Setter
         @Getter
         @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty(value = "share_type")
+        private String shareType;
+
+        @Setter
+        @Getter
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         @JsonProperty(value = "share_proto")
         private String shareProto;
 

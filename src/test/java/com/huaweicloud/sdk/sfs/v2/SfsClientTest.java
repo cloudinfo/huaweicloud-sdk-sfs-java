@@ -40,6 +40,9 @@ public class SfsClientTest extends TestBase {
             log.info("{}", share.getCreatedAt());
             log.info("{}", share.getSize());
             log.info("{}", share.getStatus());
+            log.info("{}", share.getShareType());
+            log.info("{}", share.getMetadata());
+            log.info("{}", share.getExportLocation());
         }
     }
 
