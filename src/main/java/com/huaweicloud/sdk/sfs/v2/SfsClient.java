@@ -21,7 +21,7 @@ public class SfsClient {
     }
 
 
-    public ListSfsResponse listSfs(ListSfsRequest request) {
+    public ListAllShareResponse listSfs(ListAllShareRequest request) {
         return hcClient.syncInvokeHttp(request, SfsMeta.ListSfss);
     }
 

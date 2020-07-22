@@ -13,7 +13,7 @@ import lombok.ToString;
  */
 @Builder
 @ToString
-public class ListSfsRequest {
+public class ListAllShareRequest {
 
     @Setter
     @Getter

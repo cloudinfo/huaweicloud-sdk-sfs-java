@@ -13,12 +13,12 @@ import com.huaweicloud.sdk.sfs.v2.model.*;
 @SuppressWarnings("unchecked")
 public class SfsMeta {
 
-    public static final HttpRequestDef<ListSfsRequest, ListSfsResponse> ListSfss = getAllShare();
+    public static final HttpRequestDef<ListAllShareRequest, ListAllShareResponse> ListSfss = getAllShare();
 
-    private static HttpRequestDef<ListSfsRequest, ListSfsResponse> getAllShare() {
+    private static HttpRequestDef<ListAllShareRequest, ListAllShareResponse> getAllShare() {
         // basic
-        HttpRequestDef.Builder<ListSfsRequest, ListSfsResponse> builder =
-                HttpRequestDef.builder(HttpMethod.GET, ListSfsRequest.class, ListSfsResponse.class)
+        HttpRequestDef.Builder<ListAllShareRequest, ListAllShareResponse> builder =
+                HttpRequestDef.builder(HttpMethod.GET, ListAllShareRequest.class, ListAllShareResponse.class)
                         .withUri("/v2/{project_id}/shares")
                         .withContentType("application/json;charset=UTF-8");
         // requests
@@ -26,7 +26,7 @@ public class SfsMeta {
                 LocationType.Query,
                 FieldExistence.NULL_IGNORE,
                 Integer.class,
-                f -> f.withMarshaller(ListSfsRequest::getLimit, (req, v) -> {
+                f -> f.withMarshaller(ListAllShareRequest::getLimit, (req, v) -> {
                     req.setLimit(v);
                 })
         );
@@ -35,7 +35,7 @@ public class SfsMeta {
                 LocationType.Query,
                 FieldExistence.NULL_IGNORE,
                 String.class,
-                f -> f.withMarshaller(ListSfsRequest::getEnterpriseProjectId, (req, v) -> {
+                f -> f.withMarshaller(ListAllShareRequest::getEnterpriseProjectId, (req, v) -> {
                     req.setEnterpriseProjectId(v);
                 })
         );
@@ -43,7 +43,7 @@ public class SfsMeta {
                 LocationType.Query,
                 FieldExistence.NULL_IGNORE,
                 String.class,
-                f -> f.withMarshaller(ListSfsRequest::getWithCount, (req, v) -> {
+                f -> f.withMarshaller(ListAllShareRequest::getWithCount, (req, v) -> {
                     req.setWithCount("true");
                 })
         );

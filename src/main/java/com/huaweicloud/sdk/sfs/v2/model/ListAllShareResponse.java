@@ -16,7 +16,7 @@ import java.util.List;
  * @createdAt: 2020-07-22
  */
 @ToString
-public class ListSfsResponse extends SdkResponse {
+public class ListAllShareResponse extends SdkResponse {
 
     @Setter
     @Getter
@@ -30,12 +30,12 @@ public class ListSfsResponse extends SdkResponse {
     @JsonProperty(value = "shares")
     private List<Share> shares = new ArrayList<>();
 
-    public ListSfsResponse withCount(String count) {
+    public ListAllShareResponse withCount(String count) {
         this.count = count;
         return this;
     }
 
-    public ListSfsResponse withShares(List<Share> shares) {
+    public ListAllShareResponse withShares(List<Share> shares) {
         this.shares = shares;
         return this;
     }
