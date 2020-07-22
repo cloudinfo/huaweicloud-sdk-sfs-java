@@ -17,17 +17,9 @@ public class ListSfsRequest {
 
     @Setter
     @Getter
-    @JsonProperty(value = "marker")
+    @JsonProperty(value = "is_public")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String marker;
-
-
-    @Setter
-    @Getter
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "limit")
-    private Integer limit;
-
+    private Boolean isPublic;
 
     @Setter
     @Getter
@@ -39,14 +31,12 @@ public class ListSfsRequest {
     @Setter
     @Getter
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "id")
-    private String id;
-
+    @JsonProperty(value = "with_count")
+    private String withCount;
 
     @Setter
     @Getter
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "with_count")
-    private String withCount;
-
+    @JsonProperty(value = "limit")
+    private Integer limit;
 }
