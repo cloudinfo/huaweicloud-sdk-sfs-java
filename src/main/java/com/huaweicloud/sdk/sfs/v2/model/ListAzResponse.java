@@ -26,30 +26,33 @@ public class ListAzResponse extends SdkResponse {
     @JsonProperty(value = "availability_zones")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<AvailabilityZone> availabilityZones;
+
+
+   static class AvailabilityZone {
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "id")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String id;
+        @Setter
+        @Getter
+        @JsonProperty(value = "name")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String name;
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "created_at")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String createdAt;
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "updated_at")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String updatedAt;
+    }
 }
 
-class AvailabilityZone {
 
-    @Setter
-    @Getter
-    @JsonProperty(value = "id")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String id;
-    @Setter
-    @Getter
-    @JsonProperty(value = "name")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String name;
-
-    @Setter
-    @Getter
-    @JsonProperty(value = "created_at")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String createdAt;
-
-    @Setter
-    @Getter
-    @JsonProperty(value = "updated_at")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String updatedAt;
-}
