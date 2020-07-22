@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huaweicloud.sdk.core.SdkResponse;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -27,15 +28,38 @@ public class ListSfsResponse extends SdkResponse {
     @Getter
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "shares")
-    private List<SfsShare> shares = new ArrayList<>();
+    private List<Share> shares = new ArrayList<>();
 
     public ListSfsResponse withCount(String count) {
         this.count = count;
         return this;
     }
 
-    public ListSfsResponse withShares(List<SfsShare> shares) {
+    public ListSfsResponse withShares(List<Share> shares) {
         this.shares = shares;
         return this;
+    }
+
+    @ToString
+    @NoArgsConstructor
+    public static class Share {
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "id")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String id;
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "name")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private String name;
+
+        @Setter
+        @Getter
+        @JsonProperty(value = "links")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        private List<SfsLink> links;
     }
 }

@@ -51,6 +51,48 @@ public class SfsMeta {
     }
 
     /**
+     * listAllShareDetail
+     * <p>
+     * 查询所有共享的详细信息
+     */
+    public static final HttpRequestDef<ListAllShareDetailRequest, ListAllShareDetailResponse> listAllShareDetail = genForListAllShareDetail();
+
+    private static HttpRequestDef<ListAllShareDetailRequest, ListAllShareDetailResponse> genForListAllShareDetail() {
+        // basic
+        HttpRequestDef.Builder<ListAllShareDetailRequest, ListAllShareDetailResponse> builder =
+                HttpRequestDef.builder(HttpMethod.GET, ListAllShareDetailRequest.class, ListAllShareDetailResponse.class)
+                        .withUri("/v2/{project_id}/shares/detail")
+                        .withContentType("application/json;charset=UTF-8");
+        // requests
+        builder.withRequestField("limit",
+                LocationType.Query,
+                FieldExistence.NULL_IGNORE,
+                Integer.class,
+                f -> f.withMarshaller(ListAllShareDetailRequest::getLimit, (req, v) -> {
+                    req.setLimit(v);
+                })
+        );
+
+        builder.withRequestField("enterprise_project_id",
+                LocationType.Query,
+                FieldExistence.NULL_IGNORE,
+                String.class,
+                f -> f.withMarshaller(ListAllShareDetailRequest::getEnterpriseProjectId, (req, v) -> {
+                    req.setEnterpriseProjectId(v);
+                })
+        );
+        builder.withRequestField("with_count",
+                LocationType.Query,
+                FieldExistence.NULL_IGNORE,
+                String.class,
+                f -> f.withMarshaller(ListAllShareDetailRequest::getWithCount, (req, v) -> {
+                    req.setWithCount("true");
+                })
+        );
+        return builder.build();
+    }
+
+    /**
      * deleteShare
      */
     public static final HttpRequestDef<DeleteShareRequest, DeleteShareResponse> deleteShare = genForDeleteShare();

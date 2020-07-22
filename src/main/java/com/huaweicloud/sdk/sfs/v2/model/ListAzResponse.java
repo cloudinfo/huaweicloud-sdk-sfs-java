@@ -28,7 +28,8 @@ public class ListAzResponse extends SdkResponse {
     private List<AvailabilityZone> availabilityZones;
 
 
-   static class AvailabilityZone {
+    @ToString
+    static class AvailabilityZone {
 
         @Setter
         @Getter

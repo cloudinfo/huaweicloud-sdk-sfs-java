@@ -14,13 +14,30 @@ public class SfsClientTest extends TestBase {
     @Test
     public void listSfsTest() {
         final ListSfsRequest request = ListSfsRequest.builder().withCount("true").build();
-
         ListSfsResponse response = sfsClient.listSfs(request);
         log.info("{}", response.getCount());
-        for (SfsShare share : response.getShares()) {
+        for (ListSfsResponse.Share share : response.getShares()) {
             log.info("{}", share.getName());
             log.info("{}", share.getId());
             log.info("{}", share.getLinks());
+        }
+    }
+
+
+    @Test
+    public void listAllShareDetail() {
+        final ListAllShareDetailRequest request = ListAllShareDetailRequest.builder().withCount("true").build();
+        ListAllShareDetailResponse response = sfsClient.listAllShareDetail(request);
+        log.info("{}", response.getCount());
+        for (ListAllShareDetailResponse.Share share : response.getShares()) {
+            log.info("{}", share.getId());
+            log.info("{}", share.getName());
+            log.info("{}", share.getShareProto());
+            log.info("{}", share.getDescription());
+            log.info("{}", share.getAvailabilityZone());
+            log.info("{}", share.getCreatedAt());
+            log.info("{}", share.getSize());
+            log.info("{}", share.getStatus());
         }
     }
 

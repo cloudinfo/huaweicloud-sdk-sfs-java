@@ -25,6 +25,10 @@ public class SfsClient {
         return hcClient.syncInvokeHttp(request, SfsMeta.ListSfss);
     }
 
+    public ListAllShareDetailResponse listAllShareDetail(ListAllShareDetailRequest request) {
+        return hcClient.syncInvokeHttp(request, SfsMeta.listAllShareDetail);
+    }
+
     /**
      * https://apiexplorer.developer.huaweicloud.com/apiexplorer/doc?product=SFS&api=deleteShare
      *
