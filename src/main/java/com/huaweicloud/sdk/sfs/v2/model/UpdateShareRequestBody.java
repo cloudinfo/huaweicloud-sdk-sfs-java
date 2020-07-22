@@ -18,18 +18,28 @@ public class UpdateShareRequestBody {
     @Setter
     @Getter
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "display_description")
-    private String description;
+    @JsonProperty(value = "share")
+    private Share share;
 
-    @Setter
-    @Getter
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "display_name")
-    private String name;
+    @Builder
+    @ToString
+    public static class Share {
+        @Setter
+        @Getter
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty(value = "display_description")
+        private String description;
 
-    @Setter
-    @Getter
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "is_public")
-    private Boolean isPublic;
+        @Setter
+        @Getter
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty(value = "display_name")
+        private String name;
+
+        @Setter
+        @Getter
+        @JsonInclude(JsonInclude.Include.NON_NULL)
+        @JsonProperty(value = "is_public")
+        private Boolean isPublic;
+    }
 }

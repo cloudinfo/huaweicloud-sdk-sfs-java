@@ -136,7 +136,7 @@ public class SfsMeta {
                 })
         );
 
-        builder.withRequestField("body",
+        builder.withRequestField("share",
                 LocationType.Body,
                 FieldExistence.NON_NULL_NON_EMPTY,
                 UpdateShareRequestBody.class,

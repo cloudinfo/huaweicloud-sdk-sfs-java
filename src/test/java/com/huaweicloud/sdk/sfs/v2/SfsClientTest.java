@@ -1,5 +1,7 @@
 package com.huaweicloud.sdk.sfs.v2;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huaweicloud.sdk.sfs.v2.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -56,12 +58,14 @@ public class SfsClientTest extends TestBase {
      * errorMsg: Unable to process the contained instructions
      */
     @Test
-    public void updateShare() {
+    public void updateShare() throws JsonProcessingException {
         String shareId = "a45f315f-a218-4f41-b701-ebfab27a2cad";
-        UpdateShareRequestBody body = UpdateShareRequestBody.builder().isPublic(true)
-                .name("wangkun23").description("wangkun23 描述信息").build();
+        UpdateShareRequestBody.Share share = UpdateShareRequestBody.Share.builder()
+                .name("wangkun23").build();
+
         final UpdateShareRequest request = UpdateShareRequest.builder()
-                .shareId(shareId).body(body).build();
+                .shareId(shareId).body(UpdateShareRequestBody.builder().share(share).build()).build();
+        System.out.println(new ObjectMapper().writeValueAsString(request));
         UpdateShareResponse response = sfsClient.updateShare(request);
         log.info("{}", response.getHttpStatusCode());
     }
