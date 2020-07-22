@@ -2,10 +2,7 @@ package com.huaweicloud.sdk.sfs.v2;
 
 import com.huaweicloud.sdk.core.ClientBuilder;
 import com.huaweicloud.sdk.core.HcClient;
-import com.huaweicloud.sdk.sfs.v2.model.DeleteShareRequest;
-import com.huaweicloud.sdk.sfs.v2.model.DeleteShareResponse;
-import com.huaweicloud.sdk.sfs.v2.model.ListSfsRequest;
-import com.huaweicloud.sdk.sfs.v2.model.ListSfsResponse;
+import com.huaweicloud.sdk.sfs.v2.model.*;
 
 /**
  * @author kun.wang
@@ -30,10 +27,20 @@ public class SfsClient {
 
     /**
      * https://apiexplorer.developer.huaweicloud.com/apiexplorer/doc?product=SFS&api=deleteShare
+     *
      * @param request
      * @return
      */
     public DeleteShareResponse deleteShare(DeleteShareRequest request) {
         return hcClient.syncInvokeHttp(request, SfsMeta.deleteShare);
+    }
+
+    /**
+     * 修改共享的描述和名称信息。
+     * @param request
+     * @return
+     */
+    public UpdateShareResponse updateShare(UpdateShareRequest request) {
+        return hcClient.syncInvokeHttp(request, SfsMeta.updateShare);
     }
 }

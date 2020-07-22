@@ -32,4 +32,16 @@ public class SfsClientTest extends TestBase {
         DeleteShareResponse response = sfsClient.deleteShare(request);
         log.info("{}", response.getHttpStatusCode());
     }
+
+    @Test
+    public void updateShare() {
+        String shareId = "a45f315f-a218-4f41-b701-ebfab27a2cad";
+        UpdateShareRequestBody body = UpdateShareRequestBody.builder().isPublic(true)
+                .name("wangkun23").description("wangkun23 描述信息").build();
+        final UpdateShareRequest request = UpdateShareRequest.builder()
+                .shareId(shareId).body(body).build();
+        UpdateShareResponse response = sfsClient.updateShare(request);
+        log.info("{}", response.getHttpStatusCode());
+    }
+
 }

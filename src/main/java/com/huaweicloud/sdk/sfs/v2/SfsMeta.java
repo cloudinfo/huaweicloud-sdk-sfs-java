@@ -4,10 +4,7 @@ import com.huaweicloud.sdk.core.http.FieldExistence;
 import com.huaweicloud.sdk.core.http.HttpMethod;
 import com.huaweicloud.sdk.core.http.HttpRequestDef;
 import com.huaweicloud.sdk.core.http.LocationType;
-import com.huaweicloud.sdk.sfs.v2.model.DeleteShareRequest;
-import com.huaweicloud.sdk.sfs.v2.model.DeleteShareResponse;
-import com.huaweicloud.sdk.sfs.v2.model.ListSfsRequest;
-import com.huaweicloud.sdk.sfs.v2.model.ListSfsResponse;
+import com.huaweicloud.sdk.sfs.v2.model.*;
 
 /**
  * @author kun.wang
@@ -71,6 +68,38 @@ public class SfsMeta {
                 String.class,
                 f -> f.withMarshaller(DeleteShareRequest::getShareId, (req, v) -> {
                     req.setShareId(v);
+                })
+        );
+        return builder.build();
+    }
+
+    /**
+     * updateShare
+     */
+    public static final HttpRequestDef<UpdateShareRequest, UpdateShareResponse> updateShare = genForUpdateShare();
+
+    private static HttpRequestDef<UpdateShareRequest, UpdateShareResponse> genForUpdateShare() {
+        // basic
+        HttpRequestDef.Builder<UpdateShareRequest, UpdateShareResponse> builder =
+                HttpRequestDef.builder(HttpMethod.PUT, UpdateShareRequest.class, UpdateShareResponse.class)
+                        .withUri("/v2/{project_id}/shares/{share_id}")
+                        .withContentType("application/json;charset=UTF-8");
+        // requests
+        builder.withRequestField("share_id",
+                LocationType.Path,
+                FieldExistence.NON_NULL_NON_EMPTY,
+                String.class,
+                f -> f.withMarshaller(UpdateShareRequest::getShareId, (req, v) -> {
+                    req.setShareId(v);
+                })
+        );
+
+        builder.withRequestField("body",
+                LocationType.Body,
+                FieldExistence.NON_NULL_NON_EMPTY,
+                UpdateShareRequestBody.class,
+                f -> f.withMarshaller(UpdateShareRequest::getBody, (req, v) -> {
+                    req.setBody(v);
                 })
         );
         return builder.build();
